@@ -12,9 +12,9 @@ const Home = () => {
   
 const words = [
   "Harsh Pandey",
-  "Frontend Developer",
-  "React Developer",
-  "Web Enthusiast"
+  "a Frontend Developer",
+  "a React Developer",
+  "a Web Enthusiast"
 ];
   const [text, setText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
