@@ -1,157 +1,259 @@
-import React from "react";
-import imge from "../assets/profile-pic.jpg";
-import { CiLocationOn } from "react-icons/ci";
-import { FaDotCircle, FaGithub, FaLinkedin } from "react-icons/fa";
-import { useState } from "react";
-import resume from "../assets/harsh_resume.pdf";
-import { GoDownload } from "react-icons/go";
-import { motion, useScroll, useTransform } from "motion/react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import profile from "../assets/profile-pic.jpg";
+import resume from "../assets/HpResume.pdf";
+
+import {
+  FaGithub,
+  FaLinkedin,
+  FaArrowRight,
+  FaReact,
+} from "react-icons/fa";
+
+import {
+  HiOutlineDownload,
+  HiOutlineLocationMarker,
+} from "react-icons/hi";
+
+import { motion } from "framer-motion";
+
 const Home = () => {
-  const [active, setActive] = useState(false);
-  
-const words = [
-  "Harsh Pandey",
-  "a Frontend Developer",
-  "a React Developer",
-  "a Web Enthusiast"
-];
+  const roles = [
+    "Frontend Developer",
+    "React.js Developer",
+    "Next.js Developer",
+    "Full Stack Learner",
+  ];
+
   const [text, setText] = useState("");
-  const [wordIndex, setWordIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [index, setIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const currentWord = words[wordIndex];
-    let typingSpeed = isDeleting ? 50 : 100;
+    const current = roles[index];
+    const speed = deleting ? 40 : 90;
 
-    const timeout = setTimeout(() => {
+    const timer = setTimeout(() => {
       setText((prev) =>
-        isDeleting
-          ? currentWord.substring(0, prev.length - 1)
-          : currentWord.substring(0, prev.length + 1)
+        deleting
+          ? current.substring(0, prev.length - 1)
+          : current.substring(0, prev.length + 1)
       );
 
-      if (!isDeleting && text === currentWord) {
-        setTimeout(() => setIsDeleting(true), 1200);
+      if (!deleting && text === current) {
+        setTimeout(() => setDeleting(true), 1000);
       }
 
-      if (isDeleting && text === "") {
-        setIsDeleting(false);
-        setWordIndex((prev) => (prev + 1) % words.length);
+      if (deleting && text === "") {
+        setDeleting(false);
+        setIndex((prev) => (prev + 1) % roles.length);
       }
-    }, typingSpeed);
+    }, speed);
 
-    return () => clearTimeout(timeout);
-  }, [text, isDeleting, wordIndex]); 
+    return () => clearTimeout(timer);
+  }, [text, deleting, index]);
 
   return (
-    <div
-      name="home"
-      className="min-h-screen bg-gray-950 grid grid-cols-1 lg:grid-cols-2 "
-
+    <section
+      id="home"
+      className=" pt-10 bg-[#050816] text-white overflow-hidden"
     >
-      {/* 🔵 IMAGE SECTION (TOP on mobile, RIGHT on desktop) */}
-      <motion.div 
-       initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 10 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      className="order-1 lg:order-2 w-full h-full flex justify-center items-center pt-24 lg:pt-0">
-       <div className="flex justify-center items-center bg-gray-800 w-[300px] h-[300px] rounded-2xl cursor-pointer  transition-transform duration-400 ">
-  
-  {/* Gradient glow */}
-  <div className="w-[260px] h-[260px] rounded-full hover:scale-110 transition-transform duration-400
-                  bg-gradient-to-r from-[rgb(20,193,208)] to-white 
-                  flex justify-center items-center">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-16 pt-20 md:pb-0 pb-10 grid lg:grid-cols-2 gap-16 items-center">
 
-    {/* Image container */}
-    <div className="w-[240px] h-[240px] rounded-full overflow-hidden bg-white">
-      <img
-        src={imge}
-        className=" scale-220 mt-15 ml-[-10px] object-cover"
-        alt=""
-      />
-    </div>
-
-  </div>
-
-</div>
-
-      </motion.div>
-
-      {/* 🟢 CONTENT SECTION */}
-      <motion.div
-        initial={{ opacity: 0, x: -80 }}
-        animate={{ opacity: 1, x: 10 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      className="order-2 lg:order-1 w-full h-full flex flex-col justify-center px-6 lg:pl-30 pt-10 border-b-4">
-
-        <h1 
-        className="text-3xl md:text-4xl font-bold text-white">
-          Hi, I’m <span className="text-cyan-300 font-semibold">
-      {text}
-      <span className="animate-pulse">|</span></span>
-        </h1>
-
-        <p className="subtitle text-gray-400 mt-4 max-w-xl">
-          I build modern, responsive, and user-friendly web applications using
-          React, Next.js, Tailwind CSS, and JavaScript. Passionate about clean
-          code, performance, and continuous learning.
-        </p>
-        <a
-          href={resume}
-          download
-           className=" md:hidden mt-6 w-[180px] flex items-center gap-2 px-5 py-2 rounded-full bg-gray-700 text-white hover:bg-gray-600 transition"
+        {/* LEFT CONTENT */}
+        <motion.div
+          initial={{ opacity: 0, y: 80 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          Download CV <GoDownload />
-        </a>
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 rounded-full text-sm text-cyan-300 mb-6 backdrop-blur-md">
+            <FaReact className="animate-spin-slow" />
+            Building Modern Web Experiences
+          </div>
 
-        {/* INFO */}
-        <div className="flex flex-col gap-5 pt-7 mt-6">
-          <div className="flex items-center gap-4">
-            <a href="https://www.google.com/maps/place/Crowne+Plaza+New+Delhi+Okhla+by+IHG/@28.5288244,77.2721515,17z/data=!3m1!4b1!4m9!3m8!1s0x390ce15baccb7905:0x5482910020112402!5m2!4m1!1i2!8m2!3d28.5288244!4d77.2721515!16s%2Fg%2F1tp8yf3n?hl=en&entry=ttu&g_ep=EgoyMDI2MDIwNC4wIKXMDSoASAFQAw%3D%3D" className="text-2xl text-white">
-              <CiLocationOn />
+          {/* Heading */}
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+            Hi, I'm{" "}
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Harsh Pandey
+            </span>
+          </h1>
+
+          {/* Typing Role */}
+          <div className="h-16 mt-4">
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-300">
+              {text}
+              <span className="text-cyan-400 animate-pulse">|</span>
+            </h2>
+          </div>
+
+          {/* Description */}
+          <p className=" text-gray-400 text-lg leading-relaxed max-w-2xl">
+            Frontend Developer focused on building fast, responsive, and scalable web applications using React.js, Next.js, Tailwind CSS, and JavaScript. Experienced in developing modern UI components, integrating APIs, and creating seamless user experiences through clean and maintainable code.
+
+          </p>
+
+          {/* Buttons */}
+          <div className="flex flex-wrap gap-4 mt-10">
+            <a
+              href="#projects"
+              className="group px-7 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 transition-all duration-300 text-black font-semibold flex items-center gap-2"
+            >
+              View Projects
+              <FaArrowRight className="group-hover:translate-x-1 transition" />
             </a>
-            <span className="subtitle-semibold text-gray-300">
-              Delhi Okhla Phase 1
-            </span>
+
+            <a
+              href={resume}
+              download
+              className="px-7 py-3 rounded-xl border border-gray-700 hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-300 flex items-center gap-2"
+            >
+              Download Resume
+              <HiOutlineDownload size={20} />
+            </a>
           </div>
 
-          <div className="flex items-center gap-4">
-            <span className="text-sm text-green-400 ml-1">
-              <FaDotCircle />
-            </span>
-            <span className="subtitle-semibold text-gray-300">
-              Available for new projects
-            </span>
+          {/* Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mt-12">
+
+            <div className="relative overflow-hidden rounded-2xl p-[1px]">
+              <div className="border-glow"></div>
+
+              <div className="relative bg-[#0f172a] flex items-center backdrop-blur-lg p-5 rounded-2xl h-full">
+                <div className="flex items-center gap-2 text-gray-400">
+                  <HiOutlineLocationMarker size={20} />
+                  New Delhi
+                </div>
+              </div>
+            </div>
+
+            <div className="relative overflow-hidden rounded-2xl p-[1px]">
+              <div className="border-glow"></div>
+
+              <div className="relative bg-[#0f172a] backdrop-blur-lg p-5 rounded-2xl h-full">
+                <h3 className="text-3xl font-bold text-cyan-400">1+</h3>
+                <p className="text-gray-400 text-sm mt-1">
+                  Internship Experience
+                </p>
+              </div>
+            </div>
+
+            <div className="relative overflow-hidden rounded-2xl p-[1px]">
+              <div className="border-glow"></div>
+
+              <div className="relative bg-[#0f172a] flex items-center justify-around backdrop-blur-lg p-5 rounded-2xl h-full">
+                <a
+                  href="https://github.com/harsh-pandey1489"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center"
+                >
+                  <FaGithub size={22} />
+                </a>
+
+
+                <a
+                  href="https://www.linkedin.com/in/harsh-pandey-10b670253/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 hover:border-cyan-400 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center"
+                >
+                  <FaLinkedin size={22} />
+                </a>
+              </div>
+            </div>
+
+
+
           </div>
-        </div>
 
-        {/* 🔗 SOCIAL ICONS */}
-        <div className="flex gap-6 mt-7">
-          <a
-            href="https://github.com/harsh-pandey1489"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-11 h-11 p-[2px] rounded-full bg-gradient-to-r from-gray-500 to-gray-500 hover:from-pink-500 hover:to-purple-500 transition-all"
-          >
-            <div className="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-white hover:scale-110 transition">
-              <FaGithub size={22} />
-            </div>
-          </a>
 
-          <a
-            href="https://www.linkedin.com/in/harsh-pandey-10b670253/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-11 h-11 p-[2px] rounded-full bg-gradient-to-r from-gray-500 to-gray-500 hover:from-sky-500 hover:to-blue-600 transition-all"
-          >
-            <div className="w-10 h-10 rounded-full bg-gray-900 flex items-center justify-center text-white hover:scale-110 transition">
-              <FaLinkedin size={22} />
+
+        </motion.div>
+
+
+        {/* RIGHT IMAGE */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9 }}
+          className="relative flex justify-center items-center md:pb-25"
+        >
+
+          {/* BACKGROUND BLUR */}
+          <div className="absolute  rounded-full bg-cyan-500/20 blur-[120px]"></div>
+
+          {/* MAIN CONTAINER */}
+          <div className="relative group">
+
+            {/* ANIMATED BORDER */}
+            <div className="absolute -inset-[3px] rounded-[40px] bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 opacity-70 blur-sm group-hover:blur-md transition duration-500"></div>
+
+            {/* IMAGE CARD */}
+            <div className="relative w-[300px] h-[380px] sm:w-[340px] sm:h-[430px] md:w-[420px] md:h-[500px] rounded-[40px] overflow-hidden bg-[#0b1120] border border-white/10 backdrop-blur-xl">
+
+              {/* IMAGE */}
+              <img
+                src="https://res.cloudinary.com/dumjuhrob/image/upload/v1779987146/port-img_jdn1xa.jpg"
+                alt="Harsh Pandey"
+                className="w-full h-full object-cover object-top group-hover:scale-105 transition duration-700"
+              />
+
+              {/* DARK OVERLAY */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-transparent to-transparent"></div>
+
             </div>
-          </a>
-        </div>
-      </motion.div>
-    </div>
+
+            {/* FLOATING EXPERIENCE CARD */}
+            <motion.div
+              animate={{
+                y: [0, -10, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+              }}
+              className="absolute -bottom-5 -left-8 bg-[#0f172a]/80 backdrop-blur-xl border border-white/10 px-6 py-4 rounded-2xl shadow-2xl"
+            >
+              <p className="text-gray-400 text-sm">
+                Experience
+              </p>
+
+              <h3 className="text-cyan-400 text-2xl font-bold">
+                2+ Months
+              </h3>
+
+              <p className="text-gray-500 text-sm mt-1">
+                Frontend Development
+              </p>
+            </motion.div>
+
+            {/* FLOATING TECH CARD */}
+            <motion.div
+              animate={{
+                y: [0, 12, 0],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+              }}
+              className="absolute top-6 -right-8 bg-[#0f172a]/80 backdrop-blur-xl border border-white/10 px-5 py-4 rounded-2xl shadow-xl"
+            >
+              <p className="text-gray-400 text-sm mb-1">
+                Specialized In
+              </p>
+
+              <h4 className="text-cyan-400 font-semibold">
+                React • Next.js
+              </h4>
+            </motion.div>
+
+          </div>
+        </motion.div>
+
+
+      </div>
+    </section>
   );
 };
 

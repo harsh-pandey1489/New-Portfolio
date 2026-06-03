@@ -72,3 +72,29 @@
 
 }
 
+@keyframes rotateBorder {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+.border-glow {
+  position: absolute;
+  width: 300%;
+  height: 300%;
+  top: 50%;
+  left: 50%;
+  background: conic-gradient(
+    transparent 0deg,
+    transparent 220deg,
+    #06b6d4 280deg,
+    #22d3ee 310deg,
+    #3b82f6 340deg,
+    transparent 360deg
+  );
+  animation: rotateBorder 3s linear infinite;
+}
+

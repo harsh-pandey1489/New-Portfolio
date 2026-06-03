@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-scroll";
 import { GoDownload } from "react-icons/go";
 import { motion, AnimatePresence } from "framer-motion";
-import resume from "../assets/harsh_resume.pdf";
+import resume from "../assets/HpResume.pdf";
 
 const navLinks = [
   { id: 1, name: "Home", to: "home" },
