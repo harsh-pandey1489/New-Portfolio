@@ -26,6 +26,19 @@ const Projects = () => {
 
      
     },
+    {
+      name: "AI Interview",
+      image: "https://res.cloudinary.com/dumjuhrob/image/upload/v1781253034/AiInterview_a0fucd.png",
+      tech: ["React.js", "Redux", "Firebase","MongoDb","NodeJs","ExpressJs"],
+      description:
+        "Created a responsive expense management application with real-time tracking, categorization, and persistent local storage functionality for personal finance management.",
+
+      liveLink:
+        "https://three-interviewiq-pxf9.onrender.com/",
+
+      codeLink:
+        "https://github.com/harsh-pandey1489/3.interviewIQ",
+    },
 
     {
       name: "World Atlas App",
@@ -41,6 +54,7 @@ const Projects = () => {
         "https://github.com/harsh-pandey1489/world-atlas-app",
 
     },
+     
 
     {
       name: "Expense Tracker",
@@ -55,6 +69,7 @@ const Projects = () => {
       codeLink:
         "https://github.com/harsh-pandey1489/expense-tracker",
     },
+    
   ];
 
   return (
