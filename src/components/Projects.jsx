@@ -22,7 +22,7 @@ const Projects = () => {
         "Built a full-stack AI-powered social media scheduling platform using React.js, TypeScript, Tailwind CSS, Node.js, and MongoDB. Features include AI-assisted content generation, post scheduling, authentication, dashboard analytics, and responsive UI for seamless content management.",
 
       liveLink: "https://baba-ratan.vercel.app/",
-      codeLink: "#",
+      codeLink: "https://github.com/harsh-pandey1489/Social-media-Ai-post-scheduler",
 
      
     },
