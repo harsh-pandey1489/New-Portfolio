@@ -15,17 +15,18 @@ const Projects = () => {
 
   const projects = [
     {
-      name: "Baba Ratan Website",
-      image: "https://res.cloudinary.com/dumjuhrob/image/upload/v1780472972/baba-ratan_sobi3q.png",
-      tech: ["Next.js", "React.js", "Tailwind CSS"],
+      name: "Social Media Ai Post Scheduler",
+      image: "https://res.cloudinary.com/dumjuhrob/image/upload/v1783416252/social-media-post_r3mfzd.png",
+      tech: [ "React.js", "Tailwind CSS","TypeScript","Mongodb","NodeJs"],
       description:
-        "Developed a modern business website with responsive layouts, reusable components, and optimized frontend architecture focused on performance and clean user experience.",
+        "Built a full-stack AI-powered social media scheduling platform using React.js, TypeScript, Tailwind CSS, Node.js, and MongoDB. Features include AI-assisted content generation, post scheduling, authentication, dashboard analytics, and responsive UI for seamless content management.",
 
       liveLink: "https://baba-ratan.vercel.app/",
       codeLink: "#",
 
      
     },
+   
     {
       name: "AI Interview",
       image: "https://res.cloudinary.com/dumjuhrob/image/upload/v1781253034/AiInterview_a0fucd.png",
@@ -38,6 +39,18 @@ const Projects = () => {
 
       codeLink:
         "https://github.com/harsh-pandey1489/3.interviewIQ",
+    },
+     {
+      name: "Baba Ratan Website",
+      image: "https://res.cloudinary.com/dumjuhrob/image/upload/v1780472972/baba-ratan_sobi3q.png",
+      tech: ["Next.js", "React.js", "Tailwind CSS"],
+      description:
+        "Developed a modern business website with responsive layouts, reusable components, and optimized frontend architecture focused on performance and clean user experience.",
+
+      liveLink: "https://baba-ratan.vercel.app/",
+      codeLink: "#",
+
+     
     },
 
     {

@@ -142,7 +142,7 @@ function About() {
                   </p>
 
                   <p className="text-gray-500 mt-2">
-                    SGPA: 8.22 • 8.61 • 8.44
+                    CGPA: 8.42
                   </p>
                 </div>
 
